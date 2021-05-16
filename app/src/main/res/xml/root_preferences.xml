@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Design"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            app:defaultValue="txt"
+            app:entries="@array/style_entries"
+            app:iconSpaceReserved="false"
+            app:entryValues="@array/style_values"
+            app:key="style"
+            app:title="Style"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Warning"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            app:title="Tolerance"
+            android:summary="in km/h"
+            app:iconSpaceReserved="false"
+            app:defaultValue="3"
+            app:min="0"
+            android:max="20"
+            app:showSeekBarValue="true"
+            app:key="speed_tolerance" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
