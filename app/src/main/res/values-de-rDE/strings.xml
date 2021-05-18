@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="searching_road">Suche Straße...</string>
+    <string name="not_active">Inaktiv</string>
+    <string name="pref_cat_general">Generelles</string>
+    <string name="pref_style">Stil</string>
+    <string name="pref_unit">Einheit</string>
+    <string name="pref_walking_speed">Schrittgeschwindigkeit</string>
+    <string name="pref_cat_low_warning">Geringe Warnung</string>
+    <string name="pref_tolerance">Toleranz</string>
+    <string name="pref_vibration">Vibration</string>
+    <string name="pref_cat_high_warning">Hohe Warnung</string>
+    <string name="speed_none">keins</string>
+    <string name="speed_walk">schritt</string>
+    <string name="Mo">Mo</string>
+    <string name="Tu">Di</string>
+    <string name="We">Mi</string>
+    <string name="Th">Do</string>
+    <string name="Fr">Fr</string>
+    <string name="Sa">Sa</string>
+    <string name="Su">So</string>
+    <string name="ph_off">nicht\nfeiertags</string>
+    <string name="wet">Bei\nNässe</string>
+    <string name="snow">Bei\nSchnee</string>
+    <string name="ph_on">feiertags</string>
+    <string name="sh_off">nicht währ.\nSchulferien</string>
+    <string name="sh_on">während\nSchulferien</string>
+    <string name="pref_always_all_limits">Immer alle Begrenzungen anzeigen</string>
+</resources>

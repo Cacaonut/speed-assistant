@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Speed Assistant</string>
+    <string name="app_name" translatable="false">Speed Assistant</string>
+    <string name="searching_road">Searching road…</string>
+    <string name="not_active">Not active</string>
+    <string name="pref_cat_general">General</string>
+    <string name="pref_style">Style</string>
+    <string name="pref_unit">Unit</string>
+    <string name="pref_walking_speed">Walking speed</string>
+    <string name="pref_cat_low_warning">Low Warning</string>
+    <string name="pref_tolerance">Tolerance</string>
+    <string name="pref_vibration">Vibration</string>
+    <string name="pref_cat_high_warning">High Warning</string>
+    <string name="speed_none">none</string>
+    <string name="speed_walk">walk</string>
+    <string name="speed_unknown" translatable="false">\???</string>
+    <string name="Mo">Mo</string>
+    <string name="Tu">Tu</string>
+    <string name="We">We</string>
+    <string name="Th">Th</string>
+    <string name="Fr">Fr</string>
+    <string name="Sa">Sa</string>
+    <string name="Su">Su</string>
+    <string name="ph_off">not on\nholidays</string>
+    <string name="wet">During\nrain</string>
+    <string name="snow">snow</string>
+    <string name="ph_on">on\nholidays</string>
+    <string name="sh_off">not school\nholidays</string>
+    <string name="sh_on">school\nholidays</string>
+    <string name="pref_always_all_limits">Always show all limits</string>
 </resources>

@@ -1,7 +1,7 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="Design"
+    <PreferenceCategory app:title="@string/pref_cat_general"
         app:iconSpaceReserved="false">
 
         <ListPreference
@@ -10,24 +10,83 @@
             app:iconSpaceReserved="false"
             app:entryValues="@array/style_values"
             app:key="style"
-            app:title="Style"
+            app:title="@string/pref_style"
             app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="km/h"
+            app:entries="@array/unit_entries"
+            app:iconSpaceReserved="false"
+            app:entryValues="@array/unit_values"
+            app:key="unit"
+            app:title="@string/pref_unit"
+            app:useSimpleSummaryProvider="true" />
+
+        <SeekBarPreference
+            app:title="@string/pref_walking_speed"
+            app:iconSpaceReserved="false"
+            app:defaultValue="7"
+            app:min="0"
+            android:max="20"
+            app:showSeekBarValue="true"
+            app:key="walk_speed" />
+
+        <SwitchPreference
+            app:title="@string/pref_always_all_limits"
+            app:key="always_all_limits"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Warning"
+    <PreferenceCategory app:title="@string/pref_cat_low_warning"
         app:iconSpaceReserved="false">
 
         <SeekBarPreference
-            app:title="Tolerance"
-            android:summary="in km/h"
+            app:title="@string/pref_tolerance"
             app:iconSpaceReserved="false"
             app:defaultValue="3"
             app:min="0"
             android:max="20"
             app:showSeekBarValue="true"
-            app:key="speed_tolerance" />
+            app:key="speed_tolerance_low" />
+
+        <SwitchPreference
+            app:title="@string/pref_vibration"
+            app:key="vibration_low"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/pref_cat_high_warning"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            app:title="@string/pref_tolerance"
+            app:iconSpaceReserved="false"
+            app:defaultValue="8"
+            app:min="0"
+            android:max="20"
+            app:showSeekBarValue="true"
+            app:key="speed_tolerance_high" />
+
+    </PreferenceCategory>
+
+    <!--
+    <PreferenceCategory app:title="Test"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            app:title="Speed"
+            app:iconSpaceReserved="false"
+            app:defaultValue="20"
+            app:min="0"
+            android:max="100"
+            app:showSeekBarValue="true"
+            app:key="speed" />
+
+    </PreferenceCategory>
+    -->
 
 </PreferenceScreen>

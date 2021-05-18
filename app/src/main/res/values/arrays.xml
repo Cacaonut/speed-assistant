@@ -1,14 +1,25 @@
 <resources>
-    <!-- Reply Preference -->
     <string-array name="style_entries">
-        <item>Europe</item>
-        <item>US and Canada</item>
-        <item>Standard</item>
+        <item>Germany</item>
+        <item>United States</item>
+        <item>Text</item>
     </string-array>
 
     <string-array name="style_values">
         <item>de</item>
         <item>us</item>
         <item>txt</item>
+    </string-array>
+
+    <string-array name="unit_entries">
+        <item>Metric (km/h)</item>
+        <item>Metric (m/s)</item>
+        <item>Imperial (mph)</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>km/h</item>
+        <item>m/s</item>
+        <item>mph</item>
     </string-array>
 </resources>

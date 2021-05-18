@@ -1,17 +1,17 @@
 package me.cacaonut.speedassistant.classes;
 
 public class Node {
-    private final int id;
+    private final long id;
     private final double lat;
     private final double lon;
 
-    public Node(int id, double lat, double lon) {
+    public Node(long id, double lat, double lon) {
         this.id = id;
         this.lat = lat;
         this.lon = lon;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
