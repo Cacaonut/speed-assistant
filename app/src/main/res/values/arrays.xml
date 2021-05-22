@@ -22,4 +22,42 @@
         <item>m/s</item>
         <item>mph</item>
     </string-array>
+
+    <string-array name="sound_entries">
+        <item>None</item>
+        <item>Alert 1</item>
+        <item>Alert 2</item>
+        <item>Alert 3</item>
+        <item>Alert 4</item>
+        <item>Alert 5</item>
+        <item>Alert 6</item>
+        <item>Alert 7</item>
+        <item>Alert 8</item>
+        <item>Alert 9</item>
+        <item>Alert 10</item>
+        <item>Beep</item>
+        <item>Blob</item>
+        <item>Buzz 1</item>
+        <item>Buzz 2</item>
+        <item>Ship horn</item>
+    </string-array>
+
+    <string-array name="sound_values">
+        <item>none</item>
+        <item>alert_1</item>
+        <item>alert_2</item>
+        <item>alert_3</item>
+        <item>alert_4</item>
+        <item>alert_5</item>
+        <item>alert_6</item>
+        <item>alert_7</item>
+        <item>alert_8</item>
+        <item>alert_9</item>
+        <item>alert_10</item>
+        <item>beep</item>
+        <item>blob</item>
+        <item>buzz_1</item>
+        <item>buzz_2</item>
+        <item>ship_horn</item>
+    </string-array>
 </resources>

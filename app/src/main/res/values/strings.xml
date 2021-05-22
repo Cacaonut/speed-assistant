@@ -27,4 +27,5 @@
     <string name="sh_off">not school\nholidays</string>
     <string name="sh_on">school\nholidays</string>
     <string name="pref_always_all_limits">Always show all limits</string>
+    <string name="pref_sound">Sound</string>
 </resources>

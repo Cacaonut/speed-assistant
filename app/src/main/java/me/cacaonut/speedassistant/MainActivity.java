@@ -265,8 +265,8 @@ public class MainActivity extends AppCompatActivity {
                     applicantSpeedLimit = sharedPreferences.getInt("walk_speed", 7);
 
                 int tolerance = sharedPreferences.getInt("speed_tolerance_low", 0);
-                Timber.d("Speed limit: %f", applicantSpeedLimit);
-                Timber.d("Tolerance: %d", tolerance);
+                // Timber.d("Speed limit: %f", applicantSpeedLimit);
+                // Timber.d("Tolerance: %d", tolerance);
                 if (applicantSpeedLimit == -1) {
                     layout.setBackgroundColor(Color.parseColor("#ffcc00"));
                     textViewSpeed.setTextColor(Color.DKGRAY);

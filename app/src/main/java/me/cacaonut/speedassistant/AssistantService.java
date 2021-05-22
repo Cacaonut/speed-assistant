@@ -11,6 +11,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
@@ -127,7 +130,7 @@ public class AssistantService extends Service {
             @Override
             public void onLocationResult(@NotNull LocationResult locationResult) {
                 Location loc = locationResult.getLastLocation();
-                Timber.d("Location: (%f, %f)", loc.getLatitude(), loc.getLongitude());
+                // Timber.d("Location: (%f, %f)", loc.getLatitude(), loc.getLongitude());
                 int radius = 20;
                 String url = "https://overpass.kumi.systems/api/interpreter?data=[out:json];(way(around:" + radius + "," + loc.getLatitude() + "," + loc.getLongitude() + ")[highway~\"motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street\"];way(around:" + radius + "," + loc.getLatitude() + "," + loc.getLongitude() + ")[highway~\"service|track|road\"][maxspeed];);(._;%3E;);out;";
 
@@ -183,39 +186,28 @@ public class AssistantService extends Service {
                                         speedLimitCalc = sharedPreferences.getInt("walk_speed", 7);
 
                                     float speed = loc.getSpeed();
-                                    // float speed = sharedPreferences.getInt("speed", 20);
+                                    // speed = sharedPreferences.getInt("speed", 20);
 
-                                    int toleranceLow = sharedPreferences.getInt("speed_tolerance_low", 0);
-                                    float toleranceLowCalc = toleranceLow * factor;
-                                    if (speedLimitCalc > 0 && (speed - toleranceLowCalc) > speedLimitCalc) {
-                                        if (!warnedLow) {
-                                            if (sharedPreferences.getBoolean("vibration_low", true)) {
-                                                Timber.d("Vibrating");
-                                                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                    v.vibrate(VibrationEffect.createOneShot(1500, VibrationEffect.DEFAULT_AMPLITUDE));
-                                                } else {
-                                                    v.vibrate(1500);
-                                                }
-                                            }
-                                            warnedLow = true;
-                                        }
-                                    } else {
-                                        warnedLow = false;
-                                    }
-
+                                    // High tolerance warning
                                     int toleranceHigh = sharedPreferences.getInt("speed_tolerance_high", 0);
                                     float toleranceHighCalc = toleranceHigh * factor;
                                     if (speedLimitCalc > 0 && speed - toleranceHighCalc > speedLimitCalc) {
                                         if (!warnedHigh) {
-                                            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                v.vibrate(VibrationEffect.createOneShot(1500, 255));
-                                            } else {
-                                                v.vibrate(1000);
+                                            if (sharedPreferences.getBoolean("vibration_high", true)) {
+                                                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                    v.vibrate(VibrationEffect.createOneShot(1500, 255));
+                                                } else {
+                                                    v.vibrate(1000);
+                                                }
                                             }
-                                            final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.ship_horn);
-                                            mp.start();
+
+                                            String soundHigh = sharedPreferences.getString("sound_high", "buzz_2");
+                                            if (!soundHigh.equalsIgnoreCase("none")) {
+                                                int resId = getResources().getIdentifier(soundHigh, "raw", getPackageName());
+                                                final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
+                                                mp.start();
+                                            }
 
                                             if (!SpeedAssistant.activityActive) {
                                                 String displayMode = sharedPreferences.getString("style", "txt");
@@ -257,6 +249,34 @@ public class AssistantService extends Service {
                                         }
                                     } else {
                                         warnedHigh = false;
+
+                                        // Low tolerance warning
+                                        int toleranceLow = sharedPreferences.getInt("speed_tolerance_low", 0);
+                                        float toleranceLowCalc = toleranceLow * factor;
+                                        if (speedLimitCalc > 0 && (speed - toleranceLowCalc) > speedLimitCalc) {
+                                            if (!warnedLow) {
+                                                if (sharedPreferences.getBoolean("vibration_low", true)) {
+                                                    Timber.d("Vibrating");
+                                                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                        v.vibrate(VibrationEffect.createOneShot(1500, VibrationEffect.DEFAULT_AMPLITUDE));
+                                                    } else {
+                                                        v.vibrate(1500);
+                                                    }
+                                                }
+
+                                                String soundLow = sharedPreferences.getString("sound_low", "none");
+                                                if (!soundLow.equalsIgnoreCase("none")) {
+                                                    int resId = getResources().getIdentifier(soundLow, "raw", getPackageName());
+                                                    final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
+                                                    mp.start();
+                                                }
+
+                                                warnedLow = true;
+                                            }
+                                        } else {
+                                            warnedLow = false;
+                                        }
                                     }
 
                                     Intent intent = new Intent("data");
