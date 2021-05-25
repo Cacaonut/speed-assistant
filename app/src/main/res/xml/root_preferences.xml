@@ -5,7 +5,7 @@
         app:iconSpaceReserved="false">
 
         <ListPreference
-            app:defaultValue="txt"
+            app:defaultValue="de"
             app:entries="@array/style_entries"
             app:iconSpaceReserved="false"
             app:entryValues="@array/style_values"
