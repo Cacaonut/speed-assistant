@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -95,6 +96,11 @@ public class AssistantService extends Service {
         sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
 
+        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (sharedPreferences.getBoolean("automatically_set_volume", false)) {
+            audio.setStreamVolume(AudioManager.STREAM_MUSIC, sharedPreferences.getInt("automatic_volume", 50) * audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC) / 100, 0);
+        }
+
         startForeground(1, notification);
 
         return START_STICKY;
@@ -115,7 +121,7 @@ public class AssistantService extends Service {
 
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Permission not granted!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.permission_not_granted, Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -28,4 +28,9 @@
     <string name="sh_on">school\nholidays</string>
     <string name="pref_always_all_limits">Always show all limits</string>
     <string name="pref_sound">Sound</string>
+    <string name="pref_automatically_set_volume">Automatically set volume</string>
+    <string name="pref_automatic_volume">Volume</string>
+    <string name="pref_always_all_limits_on">Shows all possible limits if conditional limits are available.</string>
+    <string name="pref_always_all_limits_off">Only shows the currently applicant limit.</string>
+    <string name="permission_not_granted">Permission not granted!</string>
 </resources>

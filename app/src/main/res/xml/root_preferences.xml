@@ -33,8 +33,8 @@
 
         <SwitchPreference
             app:title="@string/pref_always_all_limits"
-            app:summaryOn="Shows all possible limits if conditional limits are available."
-            android:summaryOff="Only shows the currently applicant limit."
+            app:summaryOn="@string/pref_always_all_limits_on"
+            android:summaryOff="@string/pref_always_all_limits_off"
             app:key="always_all_limits"
             app:defaultValue="false"
             app:iconSpaceReserved="false" />
@@ -96,6 +96,27 @@
             app:key="sound_high"
             app:title="@string/pref_sound"
             app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory app:title="Sound"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            app:title="@string/pref_automatically_set_volume"
+            app:iconSpaceReserved="false"
+            app:defaultValue="false"
+            app:key="automatically_set_volume" />
+
+        <SeekBarPreference
+            app:title="@string/pref_automatic_volume"
+            app:iconSpaceReserved="false"
+            app:defaultValue="50"
+            app:min="0"
+            android:max="100"
+            app:showSeekBarValue="true"
+            app:key="automatic_volume" />
 
     </PreferenceCategory>
 

@@ -10,8 +10,8 @@ android {
         applicationId "me.cacaonut.speedassistant"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 3
-        versionName "0.1.2-beta"
+        versionCode 4
+        versionName "0.1.3-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

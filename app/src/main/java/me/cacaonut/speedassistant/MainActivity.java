@@ -12,12 +12,14 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -62,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
+        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         createNotificationChannel();
 
@@ -100,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
                 this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+
+        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (!sharedPreferences.getBoolean("automatically_set_volume", false)) {
+            int currentVolume = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
+            if (currentVolume == 0) Toast.makeText(this, "Sound muted!", Toast.LENGTH_LONG).show();
         }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(dataReceiver,
