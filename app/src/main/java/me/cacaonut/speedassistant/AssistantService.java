@@ -211,8 +211,11 @@ public class AssistantService extends Service {
                                             String soundHigh = sharedPreferences.getString("sound_high", "buzz_2");
                                             if (!soundHigh.equalsIgnoreCase("none")) {
                                                 int resId = getResources().getIdentifier(soundHigh, "raw", getPackageName());
-                                                final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
-                                                mp.start();
+
+                                                if (resId > 0) {
+                                                    final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
+                                                    mp.start();
+                                                }
                                             }
 
                                             if (!SpeedAssistant.activityActive) {
@@ -274,8 +277,11 @@ public class AssistantService extends Service {
                                                 String soundLow = sharedPreferences.getString("sound_low", "none");
                                                 if (!soundLow.equalsIgnoreCase("none")) {
                                                     int resId = getResources().getIdentifier(soundLow, "raw", getPackageName());
-                                                    final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
-                                                    mp.start();
+
+                                                    if (resId > 0) {
+                                                        final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), resId);
+                                                        mp.start();
+                                                    }
                                                 }
 
                                                 warnedLow = true;

@@ -12,6 +12,8 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import timber.log.Timber;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -39,8 +41,10 @@ public class SettingsActivity extends AppCompatActivity {
                 Context context = getActivity();
                 if (context != null) {
                     int resId = getResources().getIdentifier((String) newValue, "raw", context.getPackageName());
-                    final MediaPlayer mp = MediaPlayer.create(context, resId);
-                    mp.start();
+                    if (resId > 0) {
+                        final MediaPlayer mp = MediaPlayer.create(context, resId);
+                        mp.start();
+                    }
                 }
                 return true;
             };
