@@ -12,8 +12,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import timber.log.Timber;
-
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
